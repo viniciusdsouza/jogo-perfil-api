@@ -8,6 +8,15 @@ const express = require("express");
 
 const app = express();
 
+const cors=require("cors");
+const corsOptions ={
+   origin:'*', 
+   credentials:true,
+   optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions))
+
 app.get("/get-card", async (req, res) => {
     const card = await db.getCard();
     const clues = await db.getClues(card[0].id);
