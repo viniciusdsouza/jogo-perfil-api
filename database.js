@@ -10,7 +10,9 @@ async function connect() {
         database: process.env.DB_NAME,
         port: process.env.DB_POST,
         user: process.env.DB_USER,
-        ssl: true,
+        ssl: {
+            rejectUnauthorized: false,
+        },
     });
 
     const client = await pool.connect();
